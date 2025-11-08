@@ -5,12 +5,13 @@ import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfil
 function buildWorker({ entry, out, debug, external } = {}) {
 	return esbuild.build({
 		plugins: [NodeModulesPolyfillPlugin()],
-		platform: 'browser',
-		conditions: ['worker', 'browser'],
 		entryPoints: [entry],
 		sourcemap: true,
 		outfile: out,
 		external,
+	external: ['cloudflare:*'],
+  platform: 'neutral',
+  conditions: ['workerd'],
 		logLevel: 'warning',
 		format: 'esm',
 		target: 'es2022',
