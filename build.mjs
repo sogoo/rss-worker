@@ -10,6 +10,7 @@ function buildWorker({ entry, out, debug, external } = {}) {
 		outfile: out,
 		external,
 	external: ['cloudflare:*'],
+		mainFields: ['module', 'main', 'browser'],
   platform: 'neutral',
   conditions: ['workerd'],
 		logLevel: 'warning',
